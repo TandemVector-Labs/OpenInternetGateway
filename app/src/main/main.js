@@ -3,6 +3,7 @@ const { spawn } = require('child_process');
 const path = require('path');
 const fs = require('fs');
 const Backend = require('./platform-backend');
+const { trustedReleaseUrl } = require('./release-url');
 
 let mainWindow;
 let tray;
@@ -160,7 +161,7 @@ function registerIpc() {
   ipcMain.handle('gateway:openRelease', async () => {
     let url = 'https://github.com/GOD13emad/OpenInternetGateway/releases/latest';
     try { url = (await backend.updateInfo(false)).releaseUrl || url; } catch {}
-    await shell.openExternal(url);
+    await shell.openExternal(trustedReleaseUrl(url));
     return { ok: true, url };
   });
   ipcMain.handle('gateway:setTheme', (_e, theme) => {
