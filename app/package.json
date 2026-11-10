@@ -107,6 +107,12 @@
   },
   "desktopName": "OpenInternetGateway.desktop",
   "overrides": {
-    "@electron/get": "5.0.0"
+    "@electron/get": "5.0.0",
+    "app-builder-lib": {
+      "minimatch": "^11.0.5"
+    },
+    "@electron/universal": {
+      "minimatch": "^11.0.5"
+    }
   }
 }
